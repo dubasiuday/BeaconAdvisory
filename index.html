@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emerald Advisory | Ireland Tax & Financial Advisory for NRIs</title>
+  <meta name="description" content="Ireland financial & tax advisory for NRIs. Form 11, Form 12, CT1 and VAT filing support with a secure portal, chat, and video guidance." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --card2:#0f172a;
+      --text:#e6edf7;
+      --muted:#b6c2d9;
+      --brand:#3b82f6;
+      --brand2:#22c55e;
+      --border:rgba(255,255,255,0.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(59,130,246,.28), transparent 55%),
+        radial-gradient(900px 500px at 80% 10%, rgba(34,197,94,.22), transparent 55%),
+        linear-gradient(180deg, #070b14, var(--bg));
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border:1px solid var(--border);
+      background:rgba(17,26,46,.6);
+      border-radius:999px;
+      color:var(--muted);
+      backdrop-filter: blur(10px);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.06);
+      color:var(--text);
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s transform, .2s background, .2s border-color;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,0.10)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(59,130,246,1), rgba(34,197,94,1));
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 14px 35px rgba(59,130,246,.25);
+      color: #061022;
+    }
+    .btn.primary:hover{filter:brightness(1.05)}
+    .btn.secondary{
+      background: rgba(59,130,246,.15);
+      border-color: rgba(59,130,246,.35);
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(7,11,20,.55);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .logo{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .mark{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(59,130,246,1), rgba(34,197,94,1));
+      display:grid; place-items:center;
+      box-shadow: var(--shadow);
+      color:#061022; font-weight:900;
+    }
+    nav ul{
+      list-style:none; padding:0; margin:0;
+      display:flex; gap:14px; align-items:center;
+    }
+    nav a{
+      color: var(--muted);
+      padding:10px 10px;
+      border-radius:10px;
+      transition:.2s background, .2s color;
+      font-weight:600;
+    }
+    nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .nav-cta{display:flex; gap:10px; align-items:center}
+
+    /* Mobile menu */
+    .menu-btn{display:none}
+    @media (max-width: 940px){
+      nav ul{display:none}
+      .menu-btn{display:inline-flex}
+      .nav-cta .btn{padding:10px 12px}
+    }
+    .mobile-menu{
+      display:none;
+      border-top:1px solid var(--border);
+      padding:12px 0 18px;
+    }
+    .mobile-menu a{
+      display:block;
+      padding:12px 10px;
+      color:var(--muted);
+      border-radius:10px;
+      font-weight:600;
+    }
+    .mobile-menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+
+    /* Hero */
+    .hero{padding:46px 0 20px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 940px){
+      .hero-grid{grid-template-columns: 1fr}
+    }
+    h1{
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.05;
+      margin: 14px 0 12px;
+      letter-spacing:-.8px;
+    }
+    .subtext{
+      color:var(--muted);
+      font-size: clamp(15px, 1.35vw, 18px);
+      line-height:1.6;
+      margin:0 0 18px;
+      max-width: 60ch;
+    }
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px}
+    .hero-card{
+      background: rgba(17,26,46,.72);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+      min-height: 100%;
+    }
+    .hero-card h3{margin:0 0 10px; font-size:16px; color:var(--text)}
+    .hero-card p{margin:0 0 12px; color:var(--muted); line-height:1.5}
+    .mini-list{margin:0; padding-left:18px; color:var(--muted)}
+    .mini-list li{margin:8px 0}
+
+    /* Trust bar */
+    .trust{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 940px){
+      .trust{grid-template-columns: 1fr}
+    }
+    .trust .item{
+      border:1px solid var(--border);
+      background: rgba(17,26,46,.55);
+      border-radius: 14px;
+      padding:12px 14px;
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .icon{
+      width:34px; height:34px; border-radius:12px;
+      background: rgba(59,130,246,.18);
+      border:1px solid rgba(59,130,246,.25);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+    }
+    .item strong{display:block; margin-bottom:3px}
+    .item span{color:var(--muted); font-size:14px; line-height:1.4}
+
+    /* Sections */
+    section{padding:34px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin-bottom:14px;
+    }
+    .section-title h2{margin:0; font-size:22px}
+    .section-title p{margin:0; color:var(--muted)}
+    .grid4{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
+    @media (max-width: 940px){
+      .grid4{grid-template-columns: 1fr}
+    }
+    .card{
+      border:1px solid var(--border);
+      background: rgba(17,26,46,.65);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+      transition:.2s transform, .2s background;
+    }
+    .card:hover{transform: translateY(-2px); background: rgba(17,26,46,.78)}
+    .card h3{margin:8px 0 8px; font-size:18px}
+    .card p{margin:0 0 12px; color:var(--muted); line-height:1.55}
+    .card .meta{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      padding:6px 10px;
+      border-radius: 999px;
+    }
+
+    /* How it works */
+    .steps{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    @media (max-width: 940px){ .steps{grid-template-columns:1fr} }
+    .step{
+      border:1px dashed rgba(255,255,255,.18);
+      background: rgba(15,23,42,.55);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .step .num{
+      width:34px; height:34px; border-radius:12px;
+      background: rgba(34,197,94,.18);
+      border:1px solid rgba(34,197,94,.25);
+      display:grid; place-items:center;
+      font-weight:800;
+      color: var(--text);
+      margin-bottom:10px;
+    }
+    .step p{color:var(--muted); margin:0; line-height:1.55}
+
+    /* Pricing preview */
+    .pricing{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    @media (max-width: 940px){ .pricing{grid-template-columns:1fr} }
+    .price{
+      font-size:28px; font-weight:900; letter-spacing:-.5px;
+      margin:10px 0 10px;
+    }
+    .ul{margin:0; padding-left:18px; color:var(--muted)}
+    .ul li{margin:8px 0}
+
+    /* Testimonials */
+    .carousel{
+      border:1px solid var(--border);
+      background: rgba(17,26,46,.6);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .t-item{display:none}
+    .t-item.active{display:block}
+    .quote{font-size:18px; line-height:1.6; margin:0 0 12px}
+    .who{color:var(--muted); margin:0}
+    .carousel-controls{
+      display:flex; gap:10px; margin-top:14px;
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--border);
+      padding:26px 0 40px;
+      background: rgba(7,11,20,.55);
+      backdrop-filter: blur(10px);
+    }
+    .footer-grid{
+      display:grid; grid-template-columns: 1.2fr .8fr .8fr;
+      gap:16px;
+    }
+    @media (max-width: 940px){ .footer-grid{grid-template-columns: 1fr} }
+    footer p, footer a{color:var(--muted); line-height:1.6}
+    .fine{font-size:12px; color:rgba(182,194,217,.75)}
+    .links a{display:block; padding:6px 0}
+    .divider{height:1px; background:var(--border); margin:16px 0}
+
+    /* WhatsApp floating button */
+    .wa{
+      position:fixed; right:18px; bottom:18px; z-index:60;
+      border-radius:999px;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="logo" href="#top" aria-label="Home">
+          <span class="mark">€</span>
+          <span>Emerald Advisory</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="tax-calculator.html">Calculator</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="portal/login.html">Login</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-cta">
+          <button class="btn menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+          <a class="btn secondary" href="tax-calculator.html" title="Estimate tax (W4)">Estimate tax</a>
+          <a class="btn primary" href="portal/start-filing.html" title="Start filing (P2)">Start filing</a>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="tax-calculator.html">Calculator</a>
+        <a href="resources.html">Resources</a>
+        <a href="#contact">Contact</a>
+        <a href="portal/login.html">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="pill">Ireland tax & financial advisory • Built for NRIs</span>
+          <h1>File Irish taxes with confidence — from anywhere.</h1>
+          <p class="subtext">
+            Fast, secure support for <strong>Form 11</strong>, <strong>Form 12</strong>, <strong>CT1</strong> and <strong>VAT returns</strong>.
+            Use our estimator in seconds, then submit your filing through a guided portal with chat & video help.
+          </p>
+          <div class="hero-actions">
+            <!-- W4 -->
+            <a class="btn secondary" href="tax-calculator.html" title="Estimate tax (W4)">
+              Estimate tax →
+            </a>
+            <!-- P2 -->
+            <a class="btn primary" href="portal/start-filing.html" title="Start filing (P2)">
+              Start filing →
+            </a>
+            <a class="btn" href="#how">How it works</a>
+          </div>
+
+          <!-- Trust bar -->
+          <div class="trust" aria-label="Trust bar">
+            <div class="item">
+              <div class="icon" aria-hidden="true">🔒</div>
+              <div>
+                <strong>Secure portal</strong>
+                <span>Private document upload and case tracking.</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="icon" aria-hidden="true">🌍</div>
+              <div>
+                <strong>NRI-friendly hours</strong>
+                <span>Support across time zones with scheduled video guidance.</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="icon" aria-hidden="true">✅</div>
+              <div>
+                <strong>Verified advisors</strong>
+                <span>Structured process and clear checklists.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Quick start">
+          <h3>Quick start checklist</h3>
+          <p>Pick a service, upload documents, and we’ll guide you through the filing workflow.</p>
+          <ul class="mini-list">
+            <li>Use the <a href="tax-calculator.html"><u>tax calculator</u></a> for a quick estimate</li>
+            <li>Start a case in the portal to upload documents securely</li>
+            <li>Chat with an advisor or book video guidance</li>
+          </ul>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="resources.html">Read guides</a>
+            <a class="btn" href="#contact">Talk to us</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Services tiles -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Services</h2>
+          <p>Start with the return you need. Each service has a guided checklist.</p>
+        </div>
+      </div>
+
+      <div class="grid4">
+        <!-- W2 (service detail pages) -->
+        <a class="card" href="services/form-11.html" title="Form 11 service detail (W2)">
+          <div class="meta">
+            <span class="tag">Individuals</span><span class="tag">Self-assessment</span>
+          </div>
+          <h3>Form 11</h3>
+          <p>For self-assessed individuals (directors, rental income, self-employed, investments, etc.).</p>
+          <span class="btn" style="pointer-events:none;">View details →</span>
+        </a>
+
+        <a class="card" href="services/form-12.html" title="Form 12 service detail (W2)">
+          <div class="meta">
+            <span class="tag">PAYE</span><span class="tag">Claims & refunds</span>
+          </div>
+          <h3>Form 12</h3>
+          <p>For PAYE taxpayers with additional income/credits and year-end adjustments.</p>
+          <span class="btn" style="pointer-events:none;">View details →</span>
+        </a>
+
+        <a class="card" href="services/ct1.html" title="CT1 service detail (W2)">
+          <div class="meta">
+            <span class="tag">Companies</span><span class="tag">Corporation tax</span>
+          </div>
+          <h3>CT1</h3>
+          <p>Corporation tax return support with structured document intake and review.</p>
+          <span class="btn" style="pointer-events:none;">View details →</span>
+        </a>
+
+        <a class="card" href="services/vat.html" title="VAT service detail (W2)">
+          <div class="meta">
+            <span class="tag">VAT</span><span class="tag">Periodic returns</span>
+          </div>
+          <h3>VAT returns</h3>
+          <p>VAT return preparation with simple VAT tools and submission guidance.</p>
+          <span class="btn" style="pointer-events:none;">View details →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>How it works</h2>
+          <p>A simple 3-step flow, designed for NRIs.</p>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3 style="margin:0 0 8px;">Choose service</h3>
+          <p>Select Form 11, Form 12, CT1 or VAT and pick a package that fits your case.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3 style="margin:0 0 8px;">Upload docs</h3>
+          <p>Use the secure portal to upload documents and answer a short questionnaire.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3 style="margin:0 0 8px;">Submit</h3>
+          <p>We review, clarify over chat, and guide you to completion with optional video support.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn secondary" href="tax-calculator.html">Estimate tax →</a>
+        <a class="btn primary" href="portal/start-filing.html">Start filing →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing preview -->
+  <section id="pricing-preview">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Pricing preview</h2>
+          <p>Clear packages with optional add-ons for complexity.</p>
+        </div>
+        <!-- W5 -->
+        <a class="btn" href="pricing.html" title="View pricing (W5)">View pricing →</a>
+      </div>
+
+      <div class="pricing">
+        <div class="card">
+          <div class="tag">Starter</div>
+          <h3 style="margin:10px 0 0;">Essential</h3>
+          <div class="price">€199</div>
+          <ul class="ul">
+            <li>Standard checklist + review</li>
+            <li>Secure document upload</li>
+            <li>Email updates</li>
+          </ul>
+          <div style="margin-top:12px;">
+            <a class="btn primary" href="portal/start-filing.html">Start filing →</a>
+          </div>
+        </div>
+
+        <div class="card" style="border-color: rgba(59,130,246,.35);">
+          <div class="tag">Most Popular</div>
+          <h3 style="margin:10px 0 0;">Plus</h3>
+          <div class="price">€349</div>
+          <ul class="ul">
+            <li>Everything in Essential</li>
+            <li>Secure chat support</li>
+            <li>1 video guidance session</li>
+          </ul>
+          <div style="margin-top:12px;">
+            <a class="btn primary" href="portal/start-filing.html">Start filing →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="tag">Premium</div>
+          <h3 style="margin:10px 0 0;">Complete</h3>
+          <div class="price">€599</div>
+          <ul class="ul">
+            <li>Priority review & SLA</li>
+            <li>Multiple income streams</li>
+            <li>Revenue queries support</li>
+          </ul>
+          <div style="margin-top:12px;">
+            <a class="btn primary" href="portal/start-filing.html">Start filing →</a>
+          </div>
+        </div>
+      </div>
+      <p class="fine" style="margin-top:10px;">
+        Prices shown are examples. Replace with your final packages in <code>pricing.html</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Testimonials carousel -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>What clients say</h2>
+          <p>Real outcomes for NRIs managing Irish filings.</p>
+        </div>
+      </div>
+
+      <div class="carousel" aria-label="Testimonials carousel">
+        <div class="t-item active">
+          <p class="quote">“The portal made it easy to upload everything from abroad. Clear checklist, quick replies, and we finished ahead of the deadline.”</p>
+          <p class="who">— NRI client, Dublin (remote filing)</p>
+        </div>
+        <div class="t-item">
+          <p class="quote">“The tax estimate helped me decide the right service. The video call cleared my questions in 15 minutes.”</p>
+          <p class="who">— Contractor, Ireland (Form 11)</p>
+        </div>
+        <div class="t-item">
+          <p class="quote">“Transparent pricing and professional guidance. Great experience handling VAT returns and queries.”</p>
+          <p class="who">— Small business owner (VAT)</p>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="btn" id="prevBtn" aria-label="Previous testimonial">← Prev</button>
+          <button class="btn" id="nextBtn" aria-label="Next testimonial">Next →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Contact</h2>
+          <p>Tell us what return you need. We’ll share a checklist and next steps.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
+          <div>
+            <h3 style="margin-top:0;">Get started</h3>
+            <p style="color:var(--muted); margin-top:0;">
+              For fastest response, use WhatsApp. For formal queries, email us.
+            </p>
+            <p><strong>Address:</strong><br><span style="color:var(--muted)">Dublin, Ireland (Remote-friendly)</span></p>
+            <p><strong>Email:</strong><br><a href="mailto:hello@emeraldadvisory.ie"><u>hello@emeraldadvisory.ie</u></a></p>
+            <p><strong>WhatsApp:</strong><br><a id="waLinkText" href="#" rel="noopener"><u>+353 00 000 0000</u></a></p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+              <a class="btn secondary" href="tax-calculator.html">Estimate tax →</a>
+              <a class="btn primary" href="portal/start-filing.html">Start filing →</a>
+            </div>
+          </div>
+
+          <form onsubmit="return false;" aria-label="Contact form">
+            <h3 style="margin-top:0;">Send a message</h3>
+            <div style="display:grid; gap:10px;">
+              <input class="btn" style="text-align:left; justify-content:flex-start" type="text" placeholder="Full name" aria-label="Full name" />
+              <input class="btn" style="text-align:left; justify-content:flex-start" type="email" placeholder="Email" aria-label="Email" />
+              <input class="btn" style="text-align:left; justify-content:flex-start" type="text" placeholder="Service (Form 11 / Form 12 / CT1 / VAT)" aria-label="Service" />
+              <textarea class="btn" style="text-align:left; justify-content:flex-start; height:110px; padding-top:12px" placeholder="Briefly describe your case…" aria-label="Message"></textarea>
+              <button class="btn primary" type="button">Submit (demo)</button>
+              <p class="fine" style="margin:0;">This is a static demo form for GitHub Pages. Connect via a form service later.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom:10px;">
+            <span class="mark">€</span>
+            <span>Emerald Advisory</span>
+          </div>
+          <p>
+            Ireland financial & tax advisory for NRIs — secure portal, guided filing,
+            and clear packages for Form 11, Form 12, CT1 and VAT.
+          </p>
+          <p class="fine">Disclaimer: This website content is for general information only and not tax advice.</p>
+        </div>
+
+        <div class="links">
+          <strong>Links</strong>
+          <a href="services/form-11.html">Form 11</a>
+          <a href="services/form-12.html">Form 12</a>
+          <a href="services/ct1.html">CT1</a>
+          <a href="services/vat.html">VAT</a>
+          <a href="tax-calculator.html">Calculator</a>
+        </div>
+
+        <div class="links">
+          <strong>Legal</strong>
+          <a href="gdpr.html">GDPR</a>
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
+          <div class="divider"></div>
+          <p><strong>Email:</strong> <a href="mailto:hello@emeraldadvisory.ie"><u>hello@emeraldadvisory.ie</u></a></p>
+          <p><strong>WhatsApp:</strong> <a id="waLinkFooter" href="#" rel="noopener"><u>+353 00 000 0000</u></a></p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <p class="fine">© <span id="year"></span> Emerald Advisory. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a class="btn wa" id="waFloat" href="#" rel="noopener" aria-label="WhatsApp us">
+    WhatsApp
+  </a>
+
+  <script>
+    // ----- Mobile menu toggle -----
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const open = mobileMenu.style.display === 'block';
+        mobileMenu.style.display = open ? 'none' : 'block';
+        menuBtn.setAttribute('aria-expanded', String(!open));
+      });
+    }
+
+    // ----- Testimonials carousel -----
+    const items = Array.from(document.querySelectorAll('.t-item'));
+    let idx = 0;
+    function show(i){
+      items.forEach((el, n) => el.classList.toggle('active', n === i));
+    }
+    document.getElementById('prevBtn')?.addEventListener('click', () => {
+      idx = (idx - 1 + items.length) % items.length;
+      show(idx);
+    });
+    document.getElementById('nextBtn')?.addEventListener('click', () => {
+      idx = (idx + 1) % items.length;
+      show(idx);
+    });
+    // auto-rotate every 8s
+    setInterval(() => {
+      idx = (idx + 1) % items.length;
+      show(idx);
+    }, 8000);
+
+    // ----- Footer year -----
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ----- WhatsApp links -----
+    // Replace with your real WhatsApp number in international format (no spaces), e.g. +353861234567
+    const waNumber = "+353000000000";
+    const waMsg = encodeURIComponent("Hi! I need help with Irish tax filing (Form 11 / Form 12 / CT1 / VAT).");
+    const waUrl = `https://wa.me/${waNumber.replace(/[^\d]/g,'')}?text=${waMsg}`;
+
+    const waLinkText = document.getElementById('waLinkText');
+    const waLinkFooter = document.getElementById('waLinkFooter');
+    const waFloat = document.getElementById('waFloat');
+
+    [waLinkText, waLinkFooter, waFloat].forEach(el => {
+      if (!el) return;
+      el.href = waUrl;
+      el.target = "_blank";
+    });
+  </script>
+</body>
+</html>
